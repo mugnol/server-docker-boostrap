@@ -1,0 +1,12 @@
+# Projects cloned into ~/projects on first boot.
+# Format: github-username/repository-name (one per line).
+# Lines starting with # and blank lines are ignored.
+#
+# Public repos work out of the box.
+# Private repos require the GH_TOKEN variable in the cloud-init user-data.
+
+your-username/example-api
+your-username/example-frontend
+your-username/ai-experiments
+
+
