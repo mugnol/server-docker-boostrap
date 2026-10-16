@@ -5,8 +5,9 @@
 # Public repos work out of the box.
 # Private repos require the GH_TOKEN variable in the cloud-init user-data.
 
-your-username/example-api
-your-username/example-frontend
-your-username/ai-experiments
-
-
+mugnol/angular-tour-of-heroes
+mugnol/spring-boot-ionic-backend
+mugnol/cursomc
+mugnol/ProgrammingAssignment2
+mugnol/datasciencecoursera
+mugnol/rpg-virtual-tabletop
