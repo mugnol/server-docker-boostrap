@@ -29,7 +29,9 @@ EOF
 chmod 600 "$HOME/.kimi-code/config.toml"
 
 # 2. Clone the projects listed in repos.txt (skips projects already cloned)
+#    The sudo chown fixes volumes that were created with root ownership
 mkdir -p "$HOME/projects"
+sudo chown dev:dev "$HOME/projects" 2>/dev/null || true
 while read -r repo; do
   [[ -z "$repo" || "$repo" =~ ^# ]] && continue
   name=$(basename "$repo")

@@ -21,6 +21,10 @@ RUN apt-get update \
     && grep -vE '^\s*(#|$)' /tmp/tools.txt | grep -v '^docker\.io$' | xargs apt-get install -y \
     && rm -rf /var/lib/apt/lists/* /tmp/tools.txt
 
+# Pre-create the projects dir with the right owner, so a named volume
+# mounted at /home/dev/projects inherits dev:dev instead of root:root
+RUN mkdir -p /home/dev/projects && chown dev:dev /home/dev/projects
+
 # Install Kimi Code CLI as the dev user
 USER dev
 WORKDIR /home/dev
