@@ -5,6 +5,17 @@ set -euo pipefail
 
 BOOTSTRAP_DIR="$HOME/bootstrap"
 
+# Git identity and push credentials, so the agent can commit and push.
+# GIT_USER_NAME / GIT_USER_EMAIL have defaults; GH_TOKEN is optional but
+# required for pushing (needs Contents: Read and Write on the repo).
+git config --global user.name "${GIT_USER_NAME:-devbox-agent}"
+git config --global user.email "${GIT_USER_EMAIL:-devbox@localhost}"
+if [ -n "${GH_TOKEN:-}" ]; then
+  git config --global credential.helper store
+  echo "https://x-access-token:${GH_TOKEN}@github.com" > "$HOME/.git-credentials"
+  chmod 600 "$HOME/.git-credentials"
+fi
+
 if [ -z "${KIMI_API_KEY:-}" ]; then
   echo "ERROR: KIMI_API_KEY is not set. Start the container with -e KIMI_API_KEY=..."
   exit 1
